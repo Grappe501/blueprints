@@ -1,16 +1,23 @@
 # make_skeleton.ps1
-# Creates the full Blueprints skeleton in the current directory.
+# Creates (or repairs) the full Blueprints skeleton in the current directory.
+# Idempotent: safe to run multiple times without errors.
 
 $ErrorActionPreference = "Stop"
 
 function Touch($path) {
   $dir = Split-Path $path
-  if ($dir -and !(Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null }
-  if (!(Test-Path $path)) { New-Item -ItemType File -Path $path | Out-Null }
+  if ($dir -and !(Test-Path $dir)) {
+    New-Item -ItemType Directory -Path $dir -Force | Out-Null
+  }
+  if (!(Test-Path $path)) {
+    New-Item -ItemType File -Path $path -Force | Out-Null
+  }
 }
 
 function Mkdir($path) {
-  if (!(Test-Path $path)) { New-Item -ItemType Directory -Path $path | Out-Null }
+  if (!(Test-Path $path)) {
+    New-Item -ItemType Directory -Path $path -Force | Out-Null
+  }
 }
 
 Write-Host "Creating Blueprints skeleton..." -ForegroundColor Cyan
