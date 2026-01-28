@@ -1,33 +1,47 @@
-# Build artifacts / phase zips
-blueprints_phase*.zip
-*.zip
-
+############################################
 # Dependencies
-node_modules/
-
-
-# Build artifacts / phase zips
-blueprints_phase*.zip
-*.zip
-
-# Next.js build output
-.next/
-**/.next/
-
-# Node deps (already)
+############################################
 node_modules/
 **/node_modules/
 
+############################################
+# Next.js build output
+############################################
+.next/
+**/.next/
+out/
+
+############################################
+# Build artifacts / phase zips
+############################################
+blueprints_phase*.zip
+*.zip
+
+############################################
 # Logs
+############################################
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Env
+############################################
+# Environment variables
+############################################
 .env
 .env.*
 !.env.example
 
-# Lockfiles policy (choose one)
-# If using per-app lockfiles, ignore root lockfile:
+############################################
+# OS / Editor noise
+############################################
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+############################################
+# Lockfile policy
+############################################
+# Ignore root lockfile (monorepo-style setup)
 package-lock.json
