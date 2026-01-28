@@ -29,12 +29,7 @@ export default function CountyPage({ params }: { params: { county: string } }) {
       />
 
       <SectionCard title="Trust markers">
-        <TrustMarkers
-          heardAt={undefined}
-          where={undefined}
-          how={undefined}
-          sourcesNote={undefined}
-        />
+        <TrustMarkers />
       </SectionCard>
 
       <div className="h-6" />

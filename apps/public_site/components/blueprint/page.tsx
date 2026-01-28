@@ -25,6 +25,7 @@ export default function BlueprintIndexPage() {
       </SectionCard>
 
       <div className="h-6" />
+
       <SectionCard title="What you’ll see here (MVP)">
         <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
           <li>Trust markers (date, place, method, source notes)</li>
