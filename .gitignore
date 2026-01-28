@@ -5,3 +5,8 @@ blueprints_phase*.zip
 # Dependencies
 node_modules/
 
+
+# Build artifacts / phase zips
+blueprints_phase*.zip
+*.zip
+
