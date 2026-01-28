@@ -1,0 +1,9 @@
+import { defineConfig } from "prisma/config";
+
+export default defineConfig({
+  schema: "db/prisma/schema.prisma",
+  migrate: {
+    // Prisma 7 requires connection config here (instead of datasource.url in schema.prisma)
+    url: process.env.DATABASE_URL,
+  },
+});
