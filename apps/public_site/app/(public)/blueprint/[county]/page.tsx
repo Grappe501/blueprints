@@ -4,11 +4,15 @@ import { SectionCard } from "@/components/site/SectionCard";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { TrustMarkers } from "@/components/site/TrustMarkers";
 import { routes } from "@/lib/routes";
-import { ar02Counties } from "@/lib/blueprint/counties";
 import { CountySnapshotCard } from "@/components/blueprint/CountySnapshotCard";
+import { getCountyBySlug } from "@/lib/db/public";
 
-export default function CountyPage({ params }: { params: { county: string } }) {
-  const county = ar02Counties.find((c) => c.slug === params.county);
+export default async function CountyPage({
+  params,
+}: {
+  params: { county: string };
+}) {
+  const county = await getCountyBySlug(params.county);
   if (!county) return notFound();
 
   return (
@@ -17,7 +21,7 @@ export default function CountyPage({ params }: { params: { county: string } }) {
         items={[
           { label: "Home", href: routes.home() },
           { label: "Blueprint", href: routes.blueprintIndex() },
-          { label: `${county.name} County` }
+          { label: `${county.name} County` },
         ]}
       />
 

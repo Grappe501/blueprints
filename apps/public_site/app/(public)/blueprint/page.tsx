@@ -2,16 +2,19 @@ import { PageHeader } from "@/components/site/PageHeader";
 import { SectionCard } from "@/components/site/SectionCard";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { routes } from "@/lib/routes";
-import { ar02Counties } from "@/lib/blueprint/counties";
 import { CountyCard } from "@/components/blueprint/CountyCard";
+import { getCounties } from "@/lib/db/public";
 
-export default function BlueprintIndexPage() {
+export default async function BlueprintIndexPage() {
+  const counties = await getCounties();
+  const firstSlug = counties[0]?.slug ?? "pulaski";
+
   return (
     <>
       <Breadcrumbs
         items={[
           { label: "Home", href: routes.home() },
-          { label: "Blueprint" }
+          { label: "Blueprint" },
         ]}
       />
 
@@ -19,12 +22,12 @@ export default function BlueprintIndexPage() {
         title="Blueprint"
         subtitle="County-by-county: what we heard, how we heard it, and what it means."
         ctaLabel="Start with your county"
-        ctaHref={routes.county(ar02Counties[0].slug)}
+        ctaHref={routes.county(firstSlug)}
       />
 
       <SectionCard title="Choose a county">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {ar02Counties.map((c) => (
+          {counties.map((c) => (
             <CountyCard key={c.slug} county={c} />
           ))}
         </div>

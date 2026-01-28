@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { routes } from "@/lib/routes";
-import type { County } from "@/lib/blueprint/counties";
+
+type CountyLike = {
+  name: string;
+  slug: string;
+};
 
 type CountyCardProps = {
-  county: County;
+  county: CountyLike;
 };
 
 export function CountyCard({ county }: CountyCardProps) {
